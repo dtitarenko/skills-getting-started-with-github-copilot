@@ -38,6 +38,45 @@ activities = {
         "schedule": "Mondays, Wednesdays, Fridays, 2:00 PM - 3:00 PM",
         "max_participants": 30,
         "participants": ["john@mergington.edu", "olivia@mergington.edu"]
+    },
+    # Sports related activities
+    "Soccer Team": {
+        "description": "Join the school soccer team and compete in local leagues",
+        "schedule": "Tuesdays and Thursdays, 4:00 PM - 5:30 PM",
+        "max_participants": 18,
+        "participants": ["lucas@mergington.edu", "mia@mergington.edu"]
+    },
+    "Basketball Club": {
+        "description": "Practice basketball skills and play friendly matches",
+        "schedule": "Wednesdays, 3:30 PM - 5:00 PM",
+        "max_participants": 15,
+        "participants": ["liam@mergington.edu", "ava@mergington.edu"]
+    },
+    # Artistic activities
+    "Art Club": {
+        "description": "Explore painting, drawing, and other visual arts",
+        "schedule": "Mondays, 3:30 PM - 5:00 PM",
+        "max_participants": 16,
+        "participants": ["noah@mergington.edu", "isabella@mergington.edu"]
+    },
+    "Drama Society": {
+        "description": "Participate in acting, stage production, and theater games",
+        "schedule": "Thursdays, 4:00 PM - 5:30 PM",
+        "max_participants": 20,
+        "participants": ["ethan@mergington.edu", "charlotte@mergington.edu"]
+    },
+    # Intellectual activities
+    "Math Olympiad": {
+        "description": "Prepare for math competitions and solve challenging problems",
+        "schedule": "Fridays, 2:00 PM - 3:30 PM",
+        "max_participants": 10,
+        "participants": ["amelia@mergington.edu", "benjamin@mergington.edu"]
+    },
+    "Science Club": {
+        "description": "Conduct experiments and explore scientific concepts",
+        "schedule": "Wednesdays, 4:00 PM - 5:00 PM",
+        "max_participants": 14,
+        "participants": ["elijah@mergington.edu", "harper@mergington.edu"]
     }
 }
 
@@ -55,6 +94,35 @@ def get_activities():
 @app.post("/activities/{activity_name}/signup")
 def signup_for_activity(activity_name: str, email: str):
     """Sign up a student for an activity"""
+    # Validate student is not already signed up
+    if not email:
+        raise HTTPException(status_code=400, detail="Email is required")
+    if "@" not in email or "." not in email:
+        raise HTTPException(status_code=400, detail="Invalid email format")
+    if email in [p for a in activities.values() for p in a["participants"]]:
+        raise HTTPException(status_code=400, detail="Student already signed up")
+    # Validate activity name format
+    if not activity_name.isalnum() or len(activity_name) < 3:
+        raise HTTPException(status_code=400, detail="Invalid activity name format")
+    if not activity_name.replace(" ", "").isalnum():
+        raise HTTPException(status_code=400, detail="Activity name must be alphanumeric")
+    # Validate activity has not reached max participants
+    if activity_name not in activities:
+        raise HTTPException(status_code=404, detail="Activity not found")
+    if len(activities[activity_name]["participants"]) >= activities[activity_name]["max_participants"]:
+        raise HTTPException(status_code=400, detail="Activity has reached maximum participants")
+    # Validate activity name is not empty
+    if not activity_name.strip():
+        raise HTTPException(status_code=400, detail="Activity name cannot be empty")
+    # Validate activity name is not too long
+    if len(activity_name) > 50:
+        raise HTTPException(status_code=400, detail="Activity name is too long")
+    # Validate activity name does not contain special characters
+    if not activity_name.replace(" ", "").isalnum():
+        raise HTTPException(status_code=400, detail="Activity name must be alphanumeric")           
+
+
+
     # Validate activity exists
     if activity_name not in activities:
         raise HTTPException(status_code=404, detail="Activity not found")
