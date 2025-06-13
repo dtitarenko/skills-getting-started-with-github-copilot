@@ -43,7 +43,7 @@ activities = {
     "Soccer Team": {
         "description": "Join the school soccer team and compete in local leagues",
         "schedule": "Tuesdays and Thursdays, 4:00 PM - 5:30 PM",
-        "max_participants": 18,
+        "max_participants": 22,
         "participants": ["lucas@mergington.edu", "mia@mergington.edu"]
     },
     "Basketball Club": {
@@ -53,30 +53,30 @@ activities = {
         "participants": ["liam@mergington.edu", "ava@mergington.edu"]
     },
     # Artistic activities
-    "Art Club": {
-        "description": "Explore painting, drawing, and other visual arts",
+    "Drama Club": {
+        "description": "Act, direct, and participate in school theater productions",
         "schedule": "Mondays, 3:30 PM - 5:00 PM",
-        "max_participants": 16,
+        "max_participants": 18,
         "participants": ["noah@mergington.edu", "isabella@mergington.edu"]
     },
-    "Drama Society": {
-        "description": "Participate in acting, stage production, and theater games",
-        "schedule": "Thursdays, 4:00 PM - 5:30 PM",
-        "max_participants": 20,
-        "participants": ["ethan@mergington.edu", "charlotte@mergington.edu"]
+    "Art Workshop": {
+        "description": "Explore painting, drawing, and other visual arts",
+        "schedule": "Thursdays, 3:30 PM - 5:00 PM",
+        "max_participants": 16,
+        "participants": ["amelia@mergington.edu", "benjamin@mergington.edu"]
     },
     # Intellectual activities
     "Math Olympiad": {
-        "description": "Prepare for math competitions and solve challenging problems",
+        "description": "Prepare for and participate in math competitions",
         "schedule": "Fridays, 2:00 PM - 3:30 PM",
         "max_participants": 10,
-        "participants": ["amelia@mergington.edu", "benjamin@mergington.edu"]
+        "participants": ["charlotte@mergington.edu", "elijah@mergington.edu"]
     },
     "Science Club": {
         "description": "Conduct experiments and explore scientific concepts",
         "schedule": "Wednesdays, 4:00 PM - 5:00 PM",
         "max_participants": 14,
-        "participants": ["elijah@mergington.edu", "harper@mergington.edu"]
+        "participants": ["james@mergington.edu", "harper@mergington.edu"]
     }
 }
 
