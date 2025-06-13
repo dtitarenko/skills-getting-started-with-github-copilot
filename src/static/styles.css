@@ -86,6 +86,19 @@ section h3 {
   font-size: 14px;
 }
 
+.activity-card ol {
+  margin-top: 10px;
+  padding-left: 20px;
+  list-style-type: decimal;
+  color: #333;
+}
+
+.activity-card ol li {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-style: italic;
+}
+
 .form-group {
   margin-bottom: 15px;
 }
